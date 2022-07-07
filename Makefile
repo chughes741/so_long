@@ -9,9 +9,9 @@ endif
 
 # Compiler and flags
 CC		=	gcc
-CFLAGS	=	-Wall -Werror -Wextra -lm
-DFLAG	=	-D DEBUG -Wall -Werror -Wextra -lm
-TFLAG	=	-pg -Wall -Werror -Wextra -lm
+CFLAGS	=	-Wall -Werror -Wextra
+DFLAG	=	-D DEBUG -Wall -Werror -Wextra
+TFLAG	=	-pg -Wall -Werror -Wextra
 RM		=	rm -rf
 
 # Dir and file names
@@ -29,7 +29,7 @@ OBJS	=	$(patsubst $(SRCDIR)%.c,$(OBJDIR)%.o,$(SRCS))
 all: $(LDIR)/$(LIBFT) $(NAME)
 
 $(NAME): $(OBJS) $(LDIR)/$(LIBFT)
-	$(HIDE)$(CC) $(CFLAGS) -o $@ $(OBJS) $(LDIR)$(LIBFT)
+	$(HIDE)$(CC) $(CFLAGS) -o $@ $(OBJS) $(LDIR)$(LIBFT) -lm
 
 $(OBJS): $(OBJDIR)%.o : $(SRCDIR)%.c
 	$(HIDE)$(CC) $(CFLAGS) -c $< -o $@
@@ -58,7 +58,7 @@ re: fclean all
 
 # Starts a debugging run
 $(DEBUG): fclean
-	$(HIDE)$(CC) $(DFLAG) -o $(DEBUG) $(SRCS) $(LDIR)$(LIBFT)
+	$(HIDE)$(CC) $(DFLAG) -o $(DEBUG) $(SRCS) $(LDIR)$(LIBFT) -lm
 
 debug: $(DEBUG)
 	$(HIDE)./$(DEBUG)
@@ -66,7 +66,7 @@ debug: $(DEBUG)
 
 # Generates test files for valgrind and gprof
 $(TEST): fclean
-	$(HIDE)$(CC) $(TFLAG) -o $(TEST) $(SRCS) $(LDIR)$(LIBFT)
+	$(HIDE)$(CC) $(TFLAG) -o $(TEST) $(SRCS) $(LDIR)$(LIBFT) -lm
 
 leak: $(TEST)
 	$(HIDE)clear
