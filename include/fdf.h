@@ -14,5 +14,6 @@
 # define FDF_H
 
 # include <math.h>
+# include "../libft/include/libft.h"
 
 #endif
