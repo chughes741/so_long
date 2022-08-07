@@ -29,6 +29,9 @@
 *.dylib
 
 # Executables
+so_long
+so_long_debug
+so_long_test
 *.exe
 *.out
 *.app
