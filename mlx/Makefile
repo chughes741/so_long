@@ -1,5 +1,8 @@
+
 # Hides calls
-VERBOSE	=	FALSE
+ifndef VERBOSE
+	VERBOSE	= TRUE
+endif
 ifeq ($(VERBOSE),TRUE)
 	HIDE =
 else
