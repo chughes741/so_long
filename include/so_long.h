@@ -14,6 +14,7 @@
 # define SO_LONG_H
 
 # include <math.h>
+# include <OpenGL/gl3.h>
 # include "../libft/include/libft.h"
 # include "../mlx/mlx.h"
 # include "../mlx/mlx_int.h"

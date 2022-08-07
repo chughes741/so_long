@@ -8,7 +8,7 @@
 .PHONY: all bonus clean fclean re debug leak time test
 
 # Hide calls
-export VERBOSE	=	FALSE
+export VERBOSE	=	TRUE
 ifeq ($(VERBOSE),TRUE)
 	HIDE =
 else
@@ -57,7 +57,7 @@ OBJS	=	$(patsubst $(SRCDIR)%.c,$(OBJDIR)%.o,$(SRCS))
 all: $(LDIR)/$(LIBFT) $(MLXDIR)/$(MLX) $(NAME)
 
 $(NAME): $(OBJS) $(LDIR)/$(LIBFT)
-	$(HIDE)$(CC) $(CFLAGS) -o $@ $(OBJS) $(LDIR)$(LIBFT) -lm
+	$(HIDE)$(CC) $(CFLAGS) $(OBJS) $(LDIR)$(LIBFT) -lm -o $@
 
 $(OBJS): $(OBJDIR)%.o : $(SRCDIR)%.c
 	$(HIDE)mkdir -p $(OBJDIR)
