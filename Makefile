@@ -1,3 +1,6 @@
+#!-----------------------------------------------------------------------------#
+#!                                 GENERICS                                    #
+#!-----------------------------------------------------------------------------#
 
 # Special variables
 .DEFAULT_GOAL: all
@@ -19,20 +22,38 @@ DFLAG	=	-D DEBUG -Wall -Werror -Wextra
 TFLAG	=	-pg -Wall -Werror -Wextra
 RM		=	rm -rf
 
+
+#!-----------------------------------------------------------------------------#
+#!                                LIBRARIES                                    #
+#!-----------------------------------------------------------------------------#
+
+LDIR	=	libft/
+LIBFT	=	libft.a
+MLXDIR	=	mlx/
+MLX		=	libmlx.a
+
+# Generates libft.a
+$(LDIR)/$(LIBFT):
+	$(HIDE)$(MAKE) -C $(LDIR)
+
+# Generates libmlx.a
+$(MLXDIR)/$(MLX):
+	$(HIDE)$(MAKE) -C $(MLXDIR)
+
+
+#!-----------------------------------------------------------------------------#
+#!                                TARGETS                                      #
+#!-----------------------------------------------------------------------------#
+
 # Dir and file names
 NAME	=	so_long
 DEBUG	=	so_long_debug
 TEST	=	so_long_test
-LIBFT	=	libft.a
-LDIR	=	libft/
-MLX		=	libmlx.a
-MLXDIR	=	mlx/
 SRCDIR	=	src/
 OBJDIR	=	bin/
 SRCS	=	$(wildcard $(SRCDIR)*.c) # Change to file names before sub
 OBJS	=	$(patsubst $(SRCDIR)%.c,$(OBJDIR)%.o,$(SRCS))
 
-# Targets
 all: $(LDIR)/$(LIBFT) $(MLXDIR)/$(MLX) $(NAME)
 
 $(NAME): $(OBJS) $(LDIR)/$(LIBFT)
@@ -42,28 +63,17 @@ $(OBJS): $(OBJDIR)%.o : $(SRCDIR)%.c
 	$(HIDE)mkdir -p $(OBJDIR)
 	$(HIDE)$(CC) $(CFLAGS) -c $< -o $@
 
-# Generates libft.a
-$(LDIR)/$(LIBFT):
-	$(HIDE)$(MAKE) -C $(LDIR)
-
-# Generates libmlx.a
-$(MLXDIR)/$(MLX):
-	$(HIDE)$(MAKE) -C $(MLXDIR) $(MAKE) -s
-
-# Compiles bonus program: checker
-bonus: all
-
 # Removes objects
 clean:
 	$(HIDE)$(RM) $(OBJS)
-	$(HIDE)$(MAKE) -C $(LDIR) $(MAKE) -s clean
-	$(HIDE)$(MAKE) -C $(MLXDIR) $(MAKE) -s clean
+	$(HIDE)$(MAKE) -C $(LDIR) $(MAKE) clean
+	$(HIDE)$(MAKE) -C $(MLXDIR) $(MAKE) clean
 
 # Removes objects and executables
 fclean: clean
 	$(HIDE)$(RM) $(NAME)
-	$(HIDE)$(MAKE) -C $(LDIR) $(MAKE) -s $@
-	$(HIDE)$(MAKE) -C $(MLXDIR) $(MAKE) -s $@
+	$(HIDE)$(MAKE) -C $(LDIR) $(MAKE) $@
+	$(HIDE)$(MAKE) -C $(MLXDIR) $(MAKE) $@
 	$(HIDE)$(RM) $(TEST)
 	$(HIDE)$(RM) $(DEBUG)
 	$(HIDE)$(RM) *.dSYM
@@ -73,16 +83,18 @@ fclean: clean
 re: fclean all
 
 
-# Starts a debugging run
+#!-----------------------------------------------------------------------------#
+#!                                TESTING                                      #
+#!-----------------------------------------------------------------------------#
+
 $(DEBUG): fclean
 	$(HIDE)$(CC) $(DFLAG) -o $@ $(SRCS) $(LDIR)$(LIBFT) -lm
 
-debug: $(DEBUG)
-	$(HIDE)./$^
-
-# Generates test files for valgrind and gprof
 $(TEST): fclean
 	$(HIDE)$(CC) $(TFLAG) -o $@ $(SRCS) $(LDIR)$(LIBFT) -lm
+
+debug: $(DEBUG)
+	$(HIDE)./$^
 
 test: $(TEST)
 	$(HIDE)clear
