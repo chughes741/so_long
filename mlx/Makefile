@@ -7,25 +7,31 @@ else
 endif
 
 # Variables
-NOM		=	libmlx.a
+NAME	=	libmlx.a
 SRC		=	mlx_shaders.c mlx_new_window.m mlx_init_loop.m mlx_new_image.m \
 			mlx_xpm.c mlx_int_str_to_wordtab.c
 SRC+	=	mlx_png.c mlx_mouse.m
 OBJ1	=	$(SRC:.c=.o)
 OBJ		=	$(OBJ1:.m=.o)
+CFLAGS	=	-w
 CFLAGS+	=	-O2
+
+RM		=	rm -rf
 
 # add to match string put with X11 in size and position
 CFLAGS+= -DSTRINGPUTX11
 
-all: $(NOM)
+all: $(NAME)
 
-$(NOM):	$(OBJ)
-	$(HIDE)ar -r $(NOM) $(OBJ)
-	$(HIDE)ranlib $(NOM)
+$(NAME): $(OBJ)
+	$(HIDE)ar -r $(NAME) $(OBJ)
+	$(HIDE)ranlib $(NAME)
 
 clean:
-	$(HIDE)rm -f $(NOM) $(OBJ) *~
-	$(HIDE)rm -f mlx_app
+	$(HIDE)$(RM) $(OBJ) *~
+	$(HIDE)$(RM) mlx_app
+
+fclean: clean
+	$(HIDE)$(RM) $(NAME)
 
 re: clean all
