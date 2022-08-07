@@ -18,8 +18,8 @@ endif
 # Compiler and flags
 CC		=	gcc
 CFLAGS	=	-Wall -Werror -Wextra
-DFLAG	=	-D DEBUG -Wall -Werror -Wextra
-TFLAG	=	-pg -Wall -Werror -Wextra
+DFLAG	=	-D DEBUG -Wall -Werror -Wextra #! Remove before submission
+TFLAG	=	-pg -Wall -Werror -Wextra #! Remove before submission
 RM		=	rm -rf
 
 
@@ -47,8 +47,8 @@ $(MLXDIR)/$(MLX):
 
 # Dir and file names
 NAME	=	so_long
-DEBUG	=	so_long_debug
-TEST	=	so_long_test
+DEBUG	=	so_long_debug #! Remove before submission
+TEST	=	so_long_test #! Remove before submission
 SRCDIR	=	src/
 OBJDIR	=	bin/
 SRCS	=	$(wildcard $(SRCDIR)*.c) # Change to file names before sub
@@ -74,10 +74,10 @@ fclean: clean
 	$(HIDE)$(RM) $(NAME)
 	$(HIDE)$(MAKE) -C $(LDIR) $(MAKE) $@
 	$(HIDE)$(MAKE) -C $(MLXDIR) $(MAKE) $@
-	$(HIDE)$(RM) $(TEST)
-	$(HIDE)$(RM) $(DEBUG)
-	$(HIDE)$(RM) *.dSYM
-	$(HIDE)$(RM) *.out
+	$(HIDE)$(RM) $(TEST) #! Remove before submission
+	$(HIDE)$(RM) $(DEBUG) #! Remove before submission
+	$(HIDE)$(RM) *.dSYM #! Remove before submission
+	$(HIDE)$(RM) *.out #! Remove before submission
 
 # Removes objects and executables and remakes
 re: fclean all
