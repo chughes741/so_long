@@ -13,6 +13,7 @@ SRC		=	mlx_shaders.c mlx_new_window.m mlx_init_loop.m mlx_new_image.m \
 SRC+	=	mlx_png.c mlx_mouse.m
 OBJ1	=	$(SRC:.c=.o)
 OBJ		=	$(OBJ1:.m=.o)
+CC		=	@gcc
 CFLAGS	=	-Wno-deprecated
 CFLAGS+	=	-O2
 
