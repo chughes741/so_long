@@ -8,7 +8,7 @@ DEFAULT_GOAL: all
 .PHONY: all bonus clean fclean re debug leak time test
 
 # Hide calls
-export VERBOSE	=	TRUE
+export VERBOSE	=	FALSE
 ifeq ($(VERBOSE),TRUE)
 	HIDE =
 else
@@ -27,18 +27,13 @@ RM		=	rm -rf
 #!                                LIBRARIES                                    #
 #!-----------------------------------------------------------------------------#
 
+LIBMLX	=	-L /usr/local/lib/ -lmlx -framework OpenGL -framework AppKit 
 LDIR	=	libft/
 LIBFT	=	libft.a
-MLXDIR	=	mlx/
-MLX		=	libmlx.dylib
 
 # Generates libft.a
 $(LDIR)/$(LIBFT):
 	$(HIDE)$(MAKE) -C $(LDIR)
-
-# Generates libmlx.a
-$(MLXDIR)/$(MLX):
-	$(HIDE)$(MAKE) -C $(MLXDIR)
 
 
 #!-----------------------------------------------------------------------------#
@@ -56,8 +51,8 @@ OBJS	=	$(patsubst $(SRCDIR)%.c,$(OBJDIR)%.o,$(SRCS))
 
 all: $(LDIR)/$(LIBFT) $(MLXDIR)/$(MLX) $(NAME)
 
-$(NAME): $(OBJS) $(LDIR)/$(LIBFT) $(MLXDIR)/$(MLX)
-	$(HIDE)$(CC) $(CFLAGS) $(OBJS) $(LDIR)$(LIBFT) -L/Users/cole/42/so_long/mlx/ -lmlx -lm -o $@
+$(NAME): $(OBJS) $(LDIR)/$(LIBFT)
+	$(HIDE)$(CC) $(CFLAGS) $(OBJS) $(LDIR)$(LIBFT) $(LIBMLX) -lm -o $@
 
 $(OBJS): $(OBJDIR)%.o : $(SRCDIR)%.c
 	$(HIDE)mkdir -p $(OBJDIR)
@@ -67,13 +62,11 @@ $(OBJS): $(OBJDIR)%.o : $(SRCDIR)%.c
 clean:
 	$(HIDE)$(RM) $(OBJS)
 #	$(HIDE)$(MAKE) -C $(LDIR) $(MAKE) clean
-#	$(HIDE)$(MAKE) -C $(MLXDIR) $(MAKE) clean
 
 # Removes objects and executables
 fclean: clean
 	$(HIDE)$(RM) $(NAME)
 #	$(HIDE)$(MAKE) -C $(LDIR) $(MAKE) $@
-#	$(HIDE)$(MAKE) -C $(MLXDIR) $(MAKE) $@
 	$(HIDE)$(RM) $(TEST) #! Remove before submission
 	$(HIDE)$(RM) $(DEBUG) #! Remove before submission
 	$(HIDE)$(RM) *.dSYM #! Remove before submission
