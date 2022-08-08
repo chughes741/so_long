@@ -17,9 +17,5 @@
 # include <OpenGL/gl3.h>
 # include "../libft/include/libft.h"
 # include "../mlx/mlx.h"
-# include "../mlx/mlx_int.h"
-# include "../mlx/mlx_new_window.h"
-# include "../mlx/mlx_opengl.h"
-# include "../mlx/mlx_png.h"
 
 #endif
