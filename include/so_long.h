@@ -34,5 +34,6 @@ typedef struct	s_data {
 
 // Function prototypes
 void	pixel_put(t_data *data, int x, int y, int color);
+t_data	*get_data(void);
 
 #endif
