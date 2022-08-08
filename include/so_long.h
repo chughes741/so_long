@@ -17,6 +17,7 @@
 # include <OpenGL/gl3.h>
 # include <mlx.h>
 # include "../libft/include/libft.h"
+# include "./color.h"
 
 // Generates offset for pixel addr
 # define OFFSET(y, len, x, bpp) (y * len + x * (bpp / 8))
