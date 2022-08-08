@@ -18,4 +18,16 @@
 # include <mlx.h>
 # include "../libft/include/libft.h"
 
+// Generates offset for pixel addr
+# define OFFSET(y, len, x, bpp) (y * len + x * (bpp / 8))
+
+// Data struct with window data
+typedef struct	s_data {
+	void	*img;
+	char	*addr;
+	int		bits_per_pixel;
+	int		line_length;
+	int		endian;
+}			t_data;
+
 #endif
