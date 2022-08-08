@@ -3,7 +3,7 @@
 #!-----------------------------------------------------------------------------#
 
 # Special variables
-.DEFAULT_GOAL: all
+DEFAULT_GOAL: all
 .DELETE_ON_ERROR: $(TEST) $(DEBUG)
 .PHONY: all bonus clean fclean re debug leak time test
 
@@ -17,7 +17,7 @@ endif
 
 # Compiler and flags
 CC		=	gcc
-CFLAGS	=	-Wall -Werror -Wextra
+CFLAGS	=	#-Wall -Werror -Wextra #! 
 DFLAG	=	-D DEBUG -Wall -Werror -Wextra #! Remove before submission
 TFLAG	=	-pg -Wall -Werror -Wextra #! Remove before submission
 RM		=	rm -rf
@@ -30,7 +30,7 @@ RM		=	rm -rf
 LDIR	=	libft/
 LIBFT	=	libft.a
 MLXDIR	=	mlx/
-MLX		=	libmlx.a
+MLX		=	libmlx.dylib
 
 # Generates libft.a
 $(LDIR)/$(LIBFT):
@@ -56,8 +56,8 @@ OBJS	=	$(patsubst $(SRCDIR)%.c,$(OBJDIR)%.o,$(SRCS))
 
 all: $(LDIR)/$(LIBFT) $(MLXDIR)/$(MLX) $(NAME)
 
-$(NAME): $(OBJS) $(LDIR)/$(LIBFT)
-	$(HIDE)$(CC) $(CFLAGS) $(OBJS) $(LDIR)$(LIBFT) -lm -o $@
+$(NAME): $(OBJS) $(LDIR)/$(LIBFT) $(MLXDIR)/$(MLX)
+	$(HIDE)$(CC) $(CFLAGS) $(OBJS) $(LDIR)$(LIBFT) -L/Users/cole/42/so_long/mlx/ -lmlx -lm -o $@
 
 $(OBJS): $(OBJDIR)%.o : $(SRCDIR)%.c
 	$(HIDE)mkdir -p $(OBJDIR)
@@ -66,14 +66,14 @@ $(OBJS): $(OBJDIR)%.o : $(SRCDIR)%.c
 # Removes objects
 clean:
 	$(HIDE)$(RM) $(OBJS)
-	$(HIDE)$(MAKE) -C $(LDIR) $(MAKE) clean
-	$(HIDE)$(MAKE) -C $(MLXDIR) $(MAKE) clean
+#	$(HIDE)$(MAKE) -C $(LDIR) $(MAKE) clean
+#	$(HIDE)$(MAKE) -C $(MLXDIR) $(MAKE) clean
 
 # Removes objects and executables
 fclean: clean
 	$(HIDE)$(RM) $(NAME)
-	$(HIDE)$(MAKE) -C $(LDIR) $(MAKE) $@
-	$(HIDE)$(MAKE) -C $(MLXDIR) $(MAKE) $@
+#	$(HIDE)$(MAKE) -C $(LDIR) $(MAKE) $@
+#	$(HIDE)$(MAKE) -C $(MLXDIR) $(MAKE) $@
 	$(HIDE)$(RM) $(TEST) #! Remove before submission
 	$(HIDE)$(RM) $(DEBUG) #! Remove before submission
 	$(HIDE)$(RM) *.dSYM #! Remove before submission
