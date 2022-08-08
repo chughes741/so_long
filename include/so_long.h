@@ -30,4 +30,7 @@ typedef struct	s_data {
 	int		endian;
 }			t_data;
 
+// Function prototypes
+void	pixel_put(t_data *data, int x, int y, int color);
+
 #endif
