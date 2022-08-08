@@ -14,22 +14,21 @@
 
 int	main(void)
 {
-	void	*mlx;
-	void	*mlx_win;
-	t_data	img;
+	t_data	*data;
 
-	mlx = mlx_init();
-	mlx_win = mlx_new_window(mlx, 1920, 1080, "Hello World!");
-	img.img = mlx_new_image(mlx, 1920, 1080);
-	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length,
-								&img.endian);
+	data = get_data();
+	data->mlx = mlx_init();
+	data->mlx_win = mlx_new_window(data->mlx, 1920, 1080, "Hello World!");
+	data->img = mlx_new_image(data->mlx, 1920, 1080);
+	data->addr = mlx_get_data_addr(data->img, &data->bits_per_pixel, 
+								&data->line_length, &data->endian);
 	for (int j = 0; j < 1080; ++j)
 	{
 		for (int i = 0; i < 1920; ++i)
-			pixel_put(&img, i, j, 0x000F00000 + i + j);
+			pixel_put(&data, i, j, COLOR(j - i, j + i, j, i));
 	}
-	mlx_put_image_to_window(mlx, mlx_win, img.img, 0, 0);
-	mlx_loop(mlx);
+	mlx_put_image_to_window(data->mlx, data->mlx_win, data->img, 0, 0);
+	mlx_loop(data->mlx);
 
 	return (0);
 }
