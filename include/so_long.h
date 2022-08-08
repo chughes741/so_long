@@ -15,7 +15,7 @@
 
 # include <math.h>
 # include <OpenGL/gl3.h>
+# include <mlx.h>
 # include "../libft/include/libft.h"
-# include "../mlx/mlx.h"
 
 #endif
