@@ -89,7 +89,7 @@ $(TEST): fclean
 debug: $(DEBUG)
 	$(HIDE)./$^
 
-test: $(TEST)
+test: $(NAME)
 	$(HIDE)clear
 	$(HIDE)./$^
 
