@@ -11,11 +11,15 @@
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
+#include <stdio.h>
 
-int	close_window(int keycode, t_data *data)
+int	close_window(int keycode, t_data **data)
 {
-	mlx_destroy_window(data->mlx, data->win);
-	return (0);
+	if (keycode != 53 && keycode > 0)
+		return (0);
+	mlx_destroy_window((*data)->mlx, (*data)->win);
+	free(*data);
+	exit(0);
 }
 
 int	main(void)
@@ -29,7 +33,8 @@ int	main(void)
 	data->addr = mlx_get_data_addr(data->img, &data->bits_per_pixel, 
 								&data->line_length, &data->endian);
 	mlx_put_image_to_window(data->mlx, data->win, data->img, 0, 0);
-	mlx_hook(data->win, ON_DESTROY, 1L<<0, close_window, &data);
+	mlx_hook(data->win, ON_DESTROY, 0, close_window, &data);
+	mlx_hook(data->win, ON_KEYDOWN, 0, close_window, &data);
 	mlx_loop(data->mlx);
 
 	return (0);
