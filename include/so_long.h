@@ -26,7 +26,7 @@
 // Data struct with window data
 typedef struct	s_data {
 	void	*mlx;
-	void	*mlx_win;
+	void	*win;
 	void	*img;
 	char	*addr;
 	int		bits_per_pixel;

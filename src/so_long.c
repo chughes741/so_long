@@ -12,22 +12,24 @@
 
 #include "../include/so_long.h"
 
+int	close_window(int keycode, t_data *data)
+{
+	mlx_destroy_window(data->mlx, data->win);
+	return (0);
+}
+
 int	main(void)
 {
 	t_data	*data;
 
 	data = get_data();
 	data->mlx = mlx_init();
-	data->mlx_win = mlx_new_window(data->mlx, 1920, 1080, "Hello World!");
+	data->win = mlx_new_window(data->mlx, 1920, 1080, "Hello World!");
 	data->img = mlx_new_image(data->mlx, 1920, 1080);
 	data->addr = mlx_get_data_addr(data->img, &data->bits_per_pixel, 
 								&data->line_length, &data->endian);
-	for (int j = 0; j < 1080; ++j)
-	{
-		for (int i = 0; i < 1920; ++i)
-			pixel_put(&data, i, j, COLOR(j - i, j + i, j, i));
-	}
-	mlx_put_image_to_window(data->mlx, data->mlx_win, data->img, 0, 0);
+	mlx_put_image_to_window(data->mlx, data->win, data->img, 0, 0);
+	mlx_hook(data->win, ON_DESTROY, 1L<<0, close_window, &data);
 	mlx_loop(data->mlx);
 
 	return (0);
