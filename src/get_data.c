@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   get_data.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chughes <chughes@42quebec.com>             +#+  +:+       +#+        */
+/*   By: chughes <chughes@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 13:33:54 by chughes           #+#    #+#             */
 /*   Updated: 2022/06/23 13:37:44 by chughes          ###   ########.fr       */
