@@ -26,17 +26,35 @@ int	close_window(int keycode, t_data **data)
 	exit(0);
 }
 
-int	main(void)
+void	put_tile(int tile, int x, int y)
 {
 	t_data	*data;
 
 	data = get_data();
+	if (tile == WALL_TILE)
+		mlx_put_image_to_window(data->mlx, data->win, data->img->wall, x, y);
+	if (tile == GRASS_TILE)
+		mlx_put_image_to_window(data->mlx, data->win, data->img->grass, x, y);
+	if (tile == EXIT_TILE)
+		mlx_put_image_to_window(data->mlx, data->win, data->img->exit, x, y);
+	if (tile == COLLEC_TILE)
+		mlx_put_image_to_window(data->mlx, data->win, data->img->collec, x, y);
+	if (tile == CHARAC_TILE)
+		mlx_put_image_to_window(data->mlx, data->win, data->img->charac, x, y);
+	return ;
+}
+
+int	main(void)
+{
+	t_data	*data;
+	data = get_data();
 	data->mlx = mlx_init();
+	init_data();
+
 	data->win = mlx_new_window(data->mlx, 1920, 1080, "Hello World!");
-	data->img = mlx_new_image(data->mlx, 1920, 1080);
-	data->addr = mlx_get_data_addr(data->img, &data->bits_per_pixel, 
-								&data->line_length, &data->endian);
-	mlx_put_image_to_window(data->mlx, data->win, data->img, 0, 0);
+
+	put_tile(WALL_TILE, 0, 0);
+
 	mlx_hook(data->win, ON_DESTROY, 0, exit_window, &data);
 	mlx_hook(data->win, ON_KEYDOWN, 0, close_window, &data);
 	mlx_loop(data->mlx);
