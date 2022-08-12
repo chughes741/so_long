@@ -23,19 +23,38 @@
 // Generates offset for pixel addr
 # define OFFSET(y, len, x, bpp) (y * len + x * (bpp / 8))
 
+// Macros for tiles and sprites
+# define WALL_TILE 100
+# define GRASS_TILE 200
+# define EXIT_TILE 300
+# define COLLEC_TILE 400
+# define CHARAC_TILE 500
+
+// Struct with sprite and tile img pointers
+typedef struct	s_img {
+	void	*wall;
+	void	*grass;
+	void	*exit;
+	void	*collec;
+	void	*charac;
+}			t_img;
+
 // Data struct with window data
 typedef struct	s_data {
 	void	*mlx;
 	void	*win;
-	void	*img;
 	char	*addr;
+	int		**map;
 	int		bits_per_pixel;
 	int		line_length;
 	int		endian;
+	t_img	*img;
 }			t_data;
 
 // Function prototypes
 void	pixel_put(t_data *data, int x, int y, int color);
 t_data	*get_data(void);
+void	init_data(void);
+void	del_data(void);
 
 #endif
