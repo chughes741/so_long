@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_data.c                                         :+:      :+:    :+:   */
+/*   data.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: chughes <chughes@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -20,4 +20,33 @@ t_data	*get_data(void)
 	if (data == NULL)
 		data = ft_calloc(1, sizeof(t_data));
 	return (data);
+}
+
+// Initialized data struct
+void	init_data(void)
+{
+	t_data	*d;
+	int		w;
+	int		h;
+
+	d = get_data();
+	d->img = ft_calloc(1, sizeof(t_img *));
+	d->img->wall = mlx_xpm_file_to_image(d->mlx, "./assets/wall.xpm", &w, &h);
+	d->img->grass = mlx_xpm_file_to_image(d->mlx, "./assets/wall.xpm", &w, &h);
+	// d->img->exit = mlx_xpm_file_to_image(d->mlx, "./assets/wall.xpm", 0, 0); //! Needs w & h
+	// d->img->collec = mlx_xpm_file_to_image(d->mlx, "./assets/wall.xpm", 0, 0); //! Needs w & h
+	// d->img->charac = mlx_xpm_file_to_image(d->mlx, "./assets/wall.xpm", 0, 0); //! Needs w & h
+	return ;
+}
+
+// Frees data and its contents
+void	del_data(void)
+{
+	t_data	*data;
+
+	data = get_data();
+	if (data->img)
+		free(data->img);
+	free(data);
+	return ;
 }
