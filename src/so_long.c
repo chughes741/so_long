@@ -44,17 +44,27 @@ void	put_tile(int tile, int x, int y)
 	return ;
 }
 
-int	main(void)
+int	main(int argc, char *argv[])
 {
 	t_data	*data;
+
 	data = get_data();
 	data->mlx = mlx_init();
-	init_data();
+	init_data(argc, argv);
+	parse_map();
 
-	data->win = mlx_new_window(data->mlx, 1920, 1080, "Hello World!");
+	data->win = mlx_new_window(data->mlx, data->width, data->height, "Beep");
 
 	for (int i = 0; i < 1920; i += 64)
 		put_tile(WALL_TILE, i, 0);
+	for (int i = 0; i < 1920; i += 64)
+		put_tile(EMPTY_TILE, i, 64);
+	for (int i = 0; i < 1920; i += 64)
+		put_tile(EXIT_TILE, i, 128);
+	for (int i = 0; i < 1920; i += 64)
+		put_tile(COLLEC_TILE, i, 194);
+	for (int i = 0; i < 1920; i += 64)
+		put_tile(CHARAC_TILE, i, 254);
 
 	mlx_hook(data->win, ON_DESTROY, 0, exit_window, &data);
 	mlx_hook(data->win, ON_KEYDOWN, 0, close_window, &data);

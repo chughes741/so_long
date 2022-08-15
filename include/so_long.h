@@ -16,6 +16,8 @@
 # include <math.h>
 # include <OpenGL/gl3.h>
 # include <mlx.h>
+# include <stdio.h>
+# include <fcntl.h>
 # include "../libft/include/libft.h"
 # include "./color.h"
 # include "./events.h"
@@ -45,6 +47,7 @@ typedef struct	s_data {
 	void	*win;
 	char	*addr;
 	int		**map;
+	int		map_fd;
 	int		height;
 	int		width;
 	int		bits_per_pixel;
@@ -56,7 +59,10 @@ typedef struct	s_data {
 // Function prototypes
 void	pixel_put(t_data *data, int x, int y, int color);
 t_data	*get_data(void);
-void	init_data(void);
+void	check_input(int argc, char *argv[]);
+void	init_data(int argc, char *argv[]);
 void	del_data(void);
+void	parse_map(void);
+void	exit_error(void);
 
 #endif
