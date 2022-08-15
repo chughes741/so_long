@@ -25,7 +25,7 @@
 
 // Macros for tiles and sprites
 # define WALL_TILE 100
-# define GRASS_TILE 200
+# define EMPTY_TILE 200
 # define EXIT_TILE 300
 # define COLLEC_TILE 400
 # define CHARAC_TILE 500
@@ -33,7 +33,7 @@
 // Struct with sprite and tile img pointers
 typedef struct	s_img {
 	void	*wall;
-	void	*grass;
+	void	*empty;
 	void	*exit;
 	void	*collec;
 	void	*charac;

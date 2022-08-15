@@ -33,8 +33,8 @@ void	put_tile(int tile, int x, int y)
 	data = get_data();
 	if (tile == WALL_TILE)
 		mlx_put_image_to_window(data->mlx, data->win, data->img->wall, x, y);
-	if (tile == GRASS_TILE)
-		mlx_put_image_to_window(data->mlx, data->win, data->img->grass, x, y);
+	if (tile == EMPTY_TILE)
+		mlx_put_image_to_window(data->mlx, data->win, data->img->empty, x, y);
 	if (tile == EXIT_TILE)
 		mlx_put_image_to_window(data->mlx, data->win, data->img->exit, x, y);
 	if (tile == COLLEC_TILE)
@@ -53,7 +53,8 @@ int	main(void)
 
 	data->win = mlx_new_window(data->mlx, 1920, 1080, "Hello World!");
 
-	put_tile(WALL_TILE, 0, 0);
+	for (int i = 0; i < 1920; i += 64)
+		put_tile(WALL_TILE, i, 0);
 
 	mlx_hook(data->win, ON_DESTROY, 0, exit_window, &data);
 	mlx_hook(data->win, ON_KEYDOWN, 0, close_window, &data);
