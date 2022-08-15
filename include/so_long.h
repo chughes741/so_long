@@ -26,11 +26,14 @@
 # define OFFSET(y, len, x, bpp) (y * len + x * (bpp / 8))
 
 // Macros for tiles and sprites
-# define WALL_TILE 100
-# define EMPTY_TILE 200
-# define EXIT_TILE 300
-# define COLLEC_TILE 400
-# define CHARAC_TILE 500
+# define WALL_TILE 1
+# define EMPTY_TILE 2
+# define EXIT_TILE 3
+# define COLLEC_TILE 4
+# define CHARAC_TILE 5
+
+// Buffer size for map read
+# define BUFFER_SIZE 100000
 
 // Struct with sprite and tile img pointers
 typedef struct	s_img {
@@ -46,7 +49,7 @@ typedef struct	s_data {
 	void	*mlx;
 	void	*win;
 	char	*addr;
-	char	**map;
+	int		**map;
 	int		map_fd;
 	int		height;
 	int		width;

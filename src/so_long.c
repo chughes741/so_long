@@ -55,17 +55,6 @@ int	main(int argc, char *argv[])
 
 	data->win = mlx_new_window(data->mlx, data->width, data->height, "Beep");
 
-	for (int i = 0; i < 1920; i += 64)
-		put_tile(WALL_TILE, i, 0);
-	for (int i = 0; i < 1920; i += 64)
-		put_tile(EMPTY_TILE, i, 64);
-	for (int i = 0; i < 1920; i += 64)
-		put_tile(EXIT_TILE, i, 128);
-	for (int i = 0; i < 1920; i += 64)
-		put_tile(COLLEC_TILE, i, 194);
-	for (int i = 0; i < 1920; i += 64)
-		put_tile(CHARAC_TILE, i, 254);
-
 	mlx_hook(data->win, ON_DESTROY, 0, exit_window, &data);
 	mlx_hook(data->win, ON_KEYDOWN, 0, close_window, &data);
 	mlx_loop(data->mlx);

@@ -27,7 +27,7 @@ void	exit_error(void)
 	t_data	*data;
 
 	data = get_data();
-	free(data);
+	del_data();
 	perror("Error\n");
 	exit(1);
 }
