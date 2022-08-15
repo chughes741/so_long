@@ -46,7 +46,7 @@ typedef struct	s_data {
 	void	*mlx;
 	void	*win;
 	char	*addr;
-	int		**map;
+	char	**map;
 	int		map_fd;
 	int		height;
 	int		width;
@@ -57,7 +57,6 @@ typedef struct	s_data {
 }			t_data;
 
 // Function prototypes
-void	pixel_put(t_data *data, int x, int y, int color);
 t_data	*get_data(void);
 void	check_input(int argc, char *argv[]);
 void	init_data(int argc, char *argv[]);
