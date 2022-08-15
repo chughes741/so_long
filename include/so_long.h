@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chughes <chughes@42quebec.com>             +#+  +:+       +#+        */
+/*   By: chughes <chughes@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 14:47:22 by chughes           #+#    #+#             */
 /*   Updated: 2022/07/07 14:48:21 by chughes          ###   ########.fr       */
@@ -45,6 +45,8 @@ typedef struct	s_data {
 	void	*win;
 	char	*addr;
 	int		**map;
+	int		height;
+	int		width;
 	int		bits_per_pixel;
 	int		line_length;
 	int		endian;
