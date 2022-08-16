@@ -18,7 +18,7 @@
 # include <mlx.h>
 # include <stdio.h>
 # include <fcntl.h>
-# include "../libft/include/libft.h"
+# include "../lft/include/libft.h"
 # include "./events.h"
 
 // Generates offset for pixel addr

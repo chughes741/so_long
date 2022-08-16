@@ -38,7 +38,7 @@ static int	linecount(char *str)
 	return (count);
 }
 
-static void	strtomap(char *str, int **map)
+static void	strtomap(char *str, char **map)
 {
 	int	i;
 	int	x;
@@ -76,11 +76,14 @@ static void	strtomap(char *str, int **map)
 void	parse_map(void)
 {
 	t_data	*data;
+	char	temp;
 	int		i;
 
 	data = get_data();
-	
-
+	while (something)
+	{
+		temp
+	}
 
 
 
