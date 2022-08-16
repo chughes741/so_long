@@ -19,7 +19,6 @@
 # include <stdio.h>
 # include <fcntl.h>
 # include "../libft/include/libft.h"
-# include "./color.h"
 # include "./events.h"
 
 // Generates offset for pixel addr
@@ -49,7 +48,7 @@ typedef struct	s_data {
 	void	*mlx;
 	void	*win;
 	char	*addr;
-	int		**map;
+	char	**map;
 	int		map_fd;
 	int		height;
 	int		width;

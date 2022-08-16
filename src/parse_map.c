@@ -76,20 +76,13 @@ static void	strtomap(char *str, int **map)
 void	parse_map(void)
 {
 	t_data	*data;
-	char	*buffer;
 	int		i;
 
 	data = get_data();
-	buffer = ft_calloc(BUFFER_SIZE + 1, sizeof(char));
-	read(data->map_fd, buffer, BUFFER_SIZE);
-	data->width = linelen(buffer);
-	data->height = linecount(buffer);
-	//TODO check indexing on linelen and linecount
-	data->map = ft_calloc(data->height, sizeof(int *));
-	i = -1;
-	while (++i < data->height)
-		data->map[i] = ft_calloc(data->width, sizeof(int));
-	strtomap(buffer, data->map);
-	free(buffer);
+	
+
+
+
+
 	return ;
 }
