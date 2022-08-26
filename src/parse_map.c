@@ -51,7 +51,6 @@ void	parse_map(void)
 		temp = get_next_line(data->map_fd);
 		ft_lstadd_back(&head, ft_lstnew(temp));
 	}
-	free(temp);
 	data->map = listtoarray(&head);
 	return ;
 }
