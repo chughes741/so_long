@@ -4,8 +4,8 @@
 
 # Special variables
 DEFAULT_GOAL: all
-.DELETE_ON_ERROR: $(TEST) $(DEBUG)
-.PHONY: all bonus clean fclean re debug leak time test
+.DELETE_ON_ERROR: $(TEST) $(DEBUG) #! RBS
+.PHONY: all bonus clean fclean re debug leak time test #! Remove other flags
 
 # Hide calls
 export VERBOSE	=	FALSE
@@ -17,7 +17,7 @@ endif
 
 # Compiler and flags
 CC		=	gcc
-CFLAGS	=	#-Wall -Werror -Wextra #! 
+CFLAGS	=	#-Wall -Werror -Wextra #! Need to figure out some of the comp errors
 DFLAG	=	-D DEBUG -Wall -Werror -Wextra #! Remove before submission
 TFLAG	=	-pg -Wall -Werror -Wextra #! Remove before submission
 RM		=	rm -rf
