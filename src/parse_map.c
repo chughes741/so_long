@@ -12,14 +12,27 @@
 
 #include "../include/so_long.h"
 
-static **listtoarray(t_list **head)
+static char**listtoarray(t_list **head)
 {
 	int		count;
 	char	**rtn;
+	t_list	*node;
+	t_list	*temp;
+	int		i;
 
 	count = ft_lstsize(*head);
 	rtn = ft_calloc(count, sizeof(char *));
-
+	node = *head;
+	i = -1;
+	while (++i < count)
+	{
+		rtn[i] = ft_strdup((*head)->content);
+		free(node->content);
+		temp = node;
+		node = node->next;
+		free(temp);
+	}
+	return (rtn);
 }
 
 void	parse_map(void)
@@ -36,7 +49,7 @@ void	parse_map(void)
 	{
 		free(temp);
 		temp = get_next_line(data->map_fd);
-		ft_lstadd_back(&head, temp);
+		ft_lstadd_back(&head, ft_lstnew(temp));
 	}
 	free(temp);
 	data->map = listtoarray(&head);
