@@ -83,15 +83,15 @@ re: fclean all
 $(DEBUG): fclean
 	$(HIDE)$(CC) $(DFLAG) -o $@ $(SRCS) $(LDIR)$(LIBFT) -lm
 
-$(TEST): fclean
+$(TEST):
 	$(HIDE)$(CC) $(TFLAG) -o $@ $(SRCS) $(LDIR)$(LIBFT) -lm
 
 debug: $(DEBUG)
 	$(HIDE)./$^
 
-test: $(NAME)
+test: re
 	$(HIDE)clear
-	$(HIDE)./$^
+	$(HIDE)./$(NAME) map_small.ber
 
 leak: $(TEST)
 	$(HIDE)clear
