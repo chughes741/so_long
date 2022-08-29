@@ -66,7 +66,7 @@ clean:
 # Removes objects and executables
 fclean: clean
 	$(HIDE)$(RM) $(NAME)
-	$(HIDE)$(MAKE) -C $(LDIR) $(MAKE) $@
+	$(HIDE)$(MAKE) -C $(LDIR) $(MAKE) fclean
 	$(HIDE)$(RM) $(TEST) #! Remove before submission
 	$(HIDE)$(RM) $(DEBUG) #! Remove before submission
 	$(HIDE)$(RM) *.dSYM #! Remove before submission
@@ -90,8 +90,8 @@ debug: $(DEBUG)
 	$(HIDE)./$^
 
 test: re
-	$(HIDE)clear
-	$(HIDE)./$(NAME) map_small.ber
+#	$(HIDE)clear
+	$(HIDE)./$(NAME) map_huge.ber
 
 leak: $(TEST)
 	$(HIDE)clear

@@ -31,6 +31,12 @@ void	parse_map(void)
 // Checks validity of map
 void	check_map(void)
 {
+	t_data	*data;
+	int		i;
+	int		j;
+
+	data = get_data();
+	// while ()
 	return ;
 }
 
@@ -53,6 +59,7 @@ void	check_input(int argc, char *argv[])
 		free(temp);
 		temp = get_next_line(data->map_fd);
 	}
+	data->width = data->height; //TODO Error checking
 	data->map = ft_calloc(data->height + 1, sizeof(char *));
 	close(data->map_fd);
 	data->map_fd = open(ft_strjoin("maps/", argv[1]), O_RDONLY);

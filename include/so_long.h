@@ -21,15 +21,15 @@
 # include "../lft/include/libft.h"
 # include "./events.h"
 
-// Generates offset for pixel addr
+// Generates offset for pixel addr //! Unused atm
 # define OFFSET(y, len, x, bpp) (y * len + x * (bpp / 8))
 
-// Macros for tiles and sprites
-# define WALL_TILE 1
-# define EMPTY_TILE 2
-# define EXIT_TILE 3
-# define COLLEC_TILE 4
-# define CHARAC_TILE 5
+// Macros for tiles and sprites //! Unused atm
+# define WALL_TILE 49
+# define EMPTY_TILE 48
+# define EXIT_TILE 69
+# define COLLEC_TILE 67
+# define CHARAC_TILE 80
 
 // Struct with sprite and tile img pointers
 typedef struct	s_img {
@@ -52,6 +52,9 @@ typedef struct	s_data {
 	int		bits_per_pixel;
 	int		line_length;
 	int		endian;
+	int		moves;
+	int		x_P;
+	int		y_P;
 	t_img	*img;
 }			t_data;
 
@@ -63,5 +66,11 @@ void	del_data(void);
 void	parse_map(void);
 void	exit_error(void);
 void	check_map(void);
+
+// Moves
+void	move_up(void);
+void	move_dn(void);
+void	move_rg(void);
+void	move_lf(void);
 
 #endif
