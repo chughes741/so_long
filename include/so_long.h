@@ -31,9 +31,6 @@
 # define COLLEC_TILE 4
 # define CHARAC_TILE 5
 
-// Buffer size for map read
-# define BUFFER_SIZE 100000
-
 // Struct with sprite and tile img pointers
 typedef struct	s_img {
 	void	*wall;
@@ -65,5 +62,6 @@ void	init_data(int argc, char *argv[]);
 void	del_data(void);
 void	parse_map(void);
 void	exit_error(void);
+void	check_map(void);
 
 #endif

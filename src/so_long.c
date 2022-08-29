@@ -51,7 +51,6 @@ int	main(int argc, char *argv[])
 	data = get_data();
 	data->mlx = mlx_init();
 	init_data(argc, argv);
-	parse_map();
 
 	data->win = mlx_new_window(data->mlx, data->width, data->height, "Beep");
 

@@ -12,45 +12,52 @@
 
 #include "../include/so_long.h"
 
-static char**listtoarray(t_list **head)
-{
-	int		count;
-	char	**rtn;
-	t_list	*node;
-	t_list	*temp;
-	int		i;
-
-	count = ft_lstsize(*head);
-	rtn = ft_calloc(count, sizeof(char *));
-	node = *head;
-	i = -1;
-	while (++i < count)
-	{
-		rtn[i] = ft_strdup((*head)->content);
-		free(node->content);
-		temp = node;
-		node = node->next;
-		free(temp);
-	}
-	return (rtn);
-}
-
+// Reads map file into an array of strings
 void	parse_map(void)
 {
 	t_data	*data;
-	t_list	*head;
-	char	*temp;
 	int		i;
 
 	data = get_data();
+	i = 0;
+	while (i < data->height)
+	{
+		data->map[i] = get_next_line(data->map_fd);
+		++i;
+	}
+	return ;
+}
+
+// Checks validity of map
+void	check_map(void)
+{
+	return ;
+}
+
+// Checks input and sets map height
+void	check_input(int argc, char *argv[])
+{
+	t_data	*data;
+	char	*temp;
+
+	data = get_data();
+	if (argc != 2)
+		exit_error();
+	data->map_fd = open(ft_strjoin("maps/", argv[1]), O_RDONLY);
+	if (data->map_fd < 0)
+		exit_error();
 	temp = get_next_line(data->map_fd);
-	head = ft_lstnew(temp);
 	while (temp)
 	{
+		data->height += 1;
 		free(temp);
 		temp = get_next_line(data->map_fd);
-		ft_lstadd_back(&head, ft_lstnew(temp));
 	}
-	data->map = listtoarray(&head);
+	data->map = ft_calloc(data->height + 1, sizeof(char *));
+	close(data->map_fd);
+	data->map_fd = open(ft_strjoin("maps/", argv[1]), O_RDONLY);
+	parse_map();
+	close(data->map_fd);
+	check_map();
 	return ;
 }

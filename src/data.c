@@ -32,19 +32,6 @@ void	exit_error(void)
 	exit(1);
 }
 
-void	check_input(int argc, char *argv[])
-{
-	t_data	*data;
-
-	data = get_data();
-	if (argc != 2)
-		exit_error();
-	data->map_fd = open(ft_strjoin("maps/", argv[1]), O_RDONLY);
-	if (data->map_fd < 0)
-		exit_error();
-	return ;
-}
-
 // Initialized data struct
 void	init_data(int argc, char *argv[])
 {
