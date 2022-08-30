@@ -13,23 +13,13 @@
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
+//TODO Check includes
 # include <math.h>
 # include <OpenGL/gl3.h>
 # include <mlx.h>
 # include <stdio.h>
 # include <fcntl.h>
 # include "../lft/include/libft.h"
-# include "./events.h"
-
-// Generates offset for pixel addr //! Unused atm
-# define OFFSET(y, len, x, bpp) (y * len + x * (bpp / 8))
-
-// Macros for tiles and sprites //! Unused atm
-# define WALL_TILE 49
-# define EMPTY_TILE 48
-# define EXIT_TILE 69
-# define COLLEC_TILE 67
-# define CHARAC_TILE 80
 
 // Struct with sprite and tile img pointers
 typedef struct	s_img {
@@ -41,7 +31,7 @@ typedef struct	s_img {
 }			t_img;
 
 // Data struct with window data
-typedef struct	s_data {
+typedef struct	s_data { //TODO Check if any are unused
 	void	*mlx;
 	void	*win;
 	char	*addr;
@@ -59,18 +49,23 @@ typedef struct	s_data {
 	t_img	*img;
 }			t_data;
 
-// Function prototypes
+// Data setup and teardown functions
 t_data	*get_data(void);
-void	check_input(int argc, char *argv[]);
 void	init_data(int argc, char *argv[]);
 void	del_data(void);
+
+// Map parsing checks
+void	check_input(int argc, char *argv[]);
 void	parse_map(void);
 void	exit_error(void);
 void	check_map(void);
-void	close_window(t_data **data);
 void	check_tile(void);
 
-// Moves
+// MLX interop functions
+void	close_window(t_data **data);
+int		render_frame(void);
+
+// Movement functions
 void	move_up(t_data **data);
 void	move_dn(t_data **data);
 void	move_lf(t_data **data);
