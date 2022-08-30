@@ -21,6 +21,17 @@
 # include <fcntl.h>
 # include "../lft/include/libft.h"
 
+// Enum for MLX functions
+enum {
+	ON_KEYDOWN = 2,
+	ON_KEYUP = 3,
+	ON_MOUSEDOWN = 4,
+	ON_MOUSEUP = 5,
+	ON_MOUSEMOVE = 6,
+	ON_EXPOSE = 12,
+	ON_DESTROY = 17
+};
+
 // Struct with sprite and tile img pointers
 typedef struct	s_img {
 	void	*wall;
