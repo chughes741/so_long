@@ -27,5 +27,5 @@ void	put_tile(char tile, int x, int y)
 		mlx_put_image_to_window(data->mlx, data->win, data->img->collec, x, y);
 	if (tile == 'P')
 		mlx_put_image_to_window(data->mlx, data->win, data->img->charac, x, y);
-	return ; 
+	return ;
 }

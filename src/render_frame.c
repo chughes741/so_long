@@ -26,6 +26,6 @@ int	render_frame(void)
 		while (++x < data->width)
 			put_tile(data->map[y][x], x * 64, y * 64);
 	}
-	put_tile('P', data->x_P * 64, data->y_P * 64);
+	put_tile('P', data->x_p * 64, data->y_p * 64);
 	return (0);
 }

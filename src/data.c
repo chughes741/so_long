@@ -15,7 +15,7 @@
 // Singleton itialization and reference getter
 t_data	*get_data(void)
 {
-	static t_data* data = NULL;
+	static t_data	*data = NULL;
 
 	if (data == NULL)
 		data = ft_calloc(1, sizeof(t_data));

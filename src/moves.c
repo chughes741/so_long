@@ -18,12 +18,12 @@ void	check_tile(void)
 	t_data	*d;
 
 	d = get_data();
-	if (d->map[d->x_P][d->y_P] == 'C')
+	if (d->map[d->x_p][d->y_p] == 'C')
 	{
-		d->map[d->x_P][d->y_P] = '0';
+		d->map[d->x_p][d->y_p] = '0';
 		d->collec -= 1;
 	}
-	if (d->map[d->x_P][d->y_P] == 'E' && d->collec == 0)
+	if (d->map[d->x_p][d->y_p] == 'E' && d->collec == 0)
 		close_window(&d);
 	return ;
 }
@@ -34,9 +34,9 @@ void	move_up(t_data **data)
 	t_data	*d;
 
 	d = (*data);
-	if (d->map[d->x_P][d->y_P - 1] == '1')
+	if (d->map[d->x_p][d->y_p - 1] == '1')
 		return ;
-	d->y_P -= 1;
+	d->y_p -= 1;
 	d->moves += 1;
 	printf("%i\n", d->moves);
 	return ;
@@ -48,9 +48,9 @@ void	move_dn(t_data **data)
 	t_data	*d;
 
 	d = (*data);
-	if (d->map[d->x_P][d->y_P + 1] == '1')
+	if (d->map[d->x_p][d->y_p + 1] == '1')
 		return ;
-	d->y_P += 1;
+	d->y_p += 1;
 	d->moves += 1;
 	printf("%i\n", d->moves);
 	return ;
@@ -62,9 +62,9 @@ void	move_lf(t_data **data)
 	t_data	*d;
 
 	d = (*data);
-	if (d->map[d->x_P - 1][d->y_P] == '1')
+	if (d->map[d->x_p - 1][d->y_p] == '1')
 		return ;
-	d->x_P -= 1;
+	d->x_p -= 1;
 	d->moves += 1;
 	printf("%i\n", d->moves);
 	return ;
@@ -76,9 +76,9 @@ void	move_rg(t_data **data)
 	t_data	*d;
 
 	d = (*data);
-	if (d->map[d->x_P + 1][d->y_P] == '1')
+	if (d->map[d->x_p + 1][d->y_p] == '1')
 		return ;
-	d->x_P += 1;
+	d->x_p += 1;
 	d->moves += 1;
 	printf("%i\n", d->moves);
 	return ;

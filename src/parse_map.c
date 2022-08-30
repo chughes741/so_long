@@ -44,8 +44,8 @@ void	check_map(void)
 		{
 			if (data->map[y][x] == 'P')
 			{
-				data->x_P = x;
-				data->y_P = y;
+				data->x_p = x;
+				data->y_p = y;
 				data->map[y][x] = '0';
 			}
 			if (data->map[y][x] == 'C')
@@ -79,7 +79,7 @@ void	check_input(int argc, char *argv[])
 	data->map_fd = open(ft_strjoin("maps/", argv[1]), O_RDONLY);
 	parse_map();
 	close(data->map_fd);
-	data->width = ft_linelen(data->map[0]); //TODO Error checking
+	data->width = ft_linelen(data->map[0]);
 	check_map();
 	return ;
 }

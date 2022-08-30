@@ -33,7 +33,7 @@ enum {
 };
 
 // Struct with sprite and tile img pointers
-typedef struct	s_img {
+typedef struct s_img {
 	void	*wall;
 	void	*empty;
 	void	*exit;
@@ -42,7 +42,7 @@ typedef struct	s_img {
 }			t_img;
 
 // Data struct with window data
-typedef struct	s_data { //TODO Check if any are unused
+typedef struct s_data { //TODO Check if any are unused
 	void	*mlx;
 	void	*win;
 	char	*addr;
@@ -54,8 +54,8 @@ typedef struct	s_data { //TODO Check if any are unused
 	int		line_length;
 	int		endian;
 	int		moves;
-	int		x_P;
-	int		y_P;
+	int		x_p;
+	int		y_p;
 	int		collec;
 	t_img	*img;
 }			t_data;

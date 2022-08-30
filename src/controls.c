@@ -12,7 +12,6 @@
 
 #include "../include/so_long.h"
 
-
 int	exit_window(int keycode, t_data **data)
 {
 	exit(0);
