@@ -47,6 +47,7 @@ typedef struct s_data { //TODO Check if any are unused
 	void	*win;
 	char	*addr;
 	char	**map;
+	char	*map_name;
 	int		map_fd;
 	int		height;
 	int		width;
@@ -66,7 +67,7 @@ void	init_data(int argc, char *argv[]);
 void	del_data(void);
 
 // Map parsing checks
-void	check_input(int argc, char *argv[]);
+void	check_input(int argc);
 void	parse_map(void);
 void	exit_error(void);
 void	check_map(void);

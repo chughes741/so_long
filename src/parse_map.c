@@ -12,6 +12,27 @@
 
 #include "../include/so_long.h"
 
+// Finds number of rows in map file
+void	map_height(void)
+{
+	t_data	*data;
+	char	*temp;
+
+	data = get_data();
+	data->map_fd = open(ft_strjoin("maps/", data->map_name), O_RDONLY);
+	if (data->map_fd < 0)
+		exit_error();
+	temp = get_next_line(data->map_fd);
+	while (temp)
+	{
+		data->height += 1;
+		free(temp);
+		temp = get_next_line(data->map_fd);
+	}
+	close(data->map_fd);
+	return ;
+}
+
 // Reads map file into an array of strings
 void	parse_map(void)
 {
@@ -19,12 +40,13 @@ void	parse_map(void)
 	int		i;
 
 	data = get_data();
-	i = 0;
-	while (i < data->height)
-	{
+	data->map_fd = open(ft_strjoin("maps/", data->map_name), O_RDONLY);
+	data->map = ft_calloc(data->height + 1, sizeof(char *));
+	i = -1;
+	while (++i < data->height)
 		data->map[i] = get_next_line(data->map_fd);
-		++i;
-	}
+	data->width = ft_linelen(data->map[0]);
+	close(data->map_fd);
 	return ;
 }
 
@@ -56,7 +78,7 @@ void	check_map(void)
 }
 
 // Checks input and sets map height
-void	check_input(int argc, char *argv[])
+void	check_input(int argc)
 {
 	t_data	*data;
 	char	*temp;
@@ -64,22 +86,8 @@ void	check_input(int argc, char *argv[])
 	data = get_data();
 	if (argc != 2)
 		exit_error();
-	data->map_fd = open(ft_strjoin("maps/", argv[1]), O_RDONLY);
-	if (data->map_fd < 0)
-		exit_error();
-	temp = get_next_line(data->map_fd);
-	while (temp)
-	{
-		data->height += 1;
-		free(temp);
-		temp = get_next_line(data->map_fd);
-	}
-	data->map = ft_calloc(data->height + 1, sizeof(char *));
-	close(data->map_fd);
-	data->map_fd = open(ft_strjoin("maps/", argv[1]), O_RDONLY);
+	map_height();
 	parse_map();
-	close(data->map_fd);
-	data->width = ft_linelen(data->map[0]);
 	check_map();
 	return ;
 }

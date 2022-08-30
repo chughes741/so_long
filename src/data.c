@@ -30,7 +30,8 @@ void	init_data(int argc, char *argv[])
 	int		h;
 
 	d = get_data();
-	check_input(argc, argv);
+	d->map_name = ft_strdup(argv[1]);
+	check_input(argc);
 	d->img = ft_calloc(1, sizeof(t_img *));
 	d->img->wall = mlx_xpm_file_to_image(d->mlx, "./assets/1.xpm", &w, &h);
 	d->img->empty = mlx_xpm_file_to_image(d->mlx, "./assets/0.xpm", &w, &h);
