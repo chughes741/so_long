@@ -65,6 +65,9 @@ void	check_tile(void);
 void	close_window(t_data **data);
 int		render_frame(void);
 void	put_tile(char tile, int x, int y);
+int		exit_window(int keycode, t_data **data);
+void	close_window(t_data **data);
+int		keydown(int keycode, t_data **data);
 
 // Movement functions
 void	move_up(t_data **data);
