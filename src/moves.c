@@ -12,34 +12,74 @@
 
 #include "../include/so_long.h"
 
-void	move_up(void)
+// Checks if the current tile is a collectable or exit
+void	check_tile(void)
 {
-	t_data	*data;
+	t_data	*d;
 
-	data = get_data();
+	d = get_data();
+	if (d->map[d->x_P][d->y_P] == 'C')
+	{
+		d->map[d->x_P][d->y_P] = '0';
+		d->collec -= 1;
+	}
+	if (d->map[d->x_P][d->y_P] == 'E' && d->collec == 0)
+		close_window(&d);
 	return ;
 }
 
-void	move_dn(void)
+// Move player sprite up one space
+void	move_up(t_data **data)
 {
-	t_data	*data;
+	t_data	*d;
 
-	data = get_data();
+	d = (*data);
+	if (d->map[d->x_P][d->y_P - 1] == '1')
+		return ;
+	d->y_P -= 1;
+	d->moves += 1;
+	printf("%i\n", d->moves);
 	return ;
 }
 
-void	move_rg(void)
+// Move player sprite down one space
+void	move_dn(t_data **data)
 {
-	t_data	*data;
+	t_data	*d;
 
-	data = get_data();
+	d = (*data);
+	if (d->map[d->x_P][d->y_P + 1] == '1')
+		return ;
+	d->y_P += 1;
+	d->moves += 1;
+	printf("%i\n", d->moves);
 	return ;
 }
 
-void	move_lf(void)
+// Move player sprite left one space
+void	move_lf(t_data **data)
 {
-	t_data	*data;
+	t_data	*d;
 
-	data = get_data();
+	d = (*data);
+	if (d->map[d->x_P - 1][d->y_P] == '1')
+		return ;
+	d->x_P -= 1;
+	d->moves += 1;
+	printf("%i\n", d->moves);
+	return ;
+}
+
+// Move player sprite right one space
+void	move_rg(t_data **data)
+{
+	t_data	*d;
+
+	d = (*data);
+	if (d->map[d->x_P + 1][d->y_P] == '1')
+		return ;
+	d->x_P += 1;
+	d->moves += 1;
+	printf("%i\n", d->moves);
 	return ;
 }

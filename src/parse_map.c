@@ -32,11 +32,26 @@ void	parse_map(void)
 void	check_map(void)
 {
 	t_data	*data;
-	int		i;
-	int		j;
+	int		x;
+	int		y;
 
 	data = get_data();
-	// while ()
+	y = -1;
+	while (++y < data->height)
+	{
+		x = -1;
+		while (++x < data->width)
+		{
+			if (data->map[y][x] == 'P')
+			{
+				data->x_P = x;
+				data->y_P = y;
+				data->map[y][x] = '0';
+			}
+			if (data->map[y][x] == 'C')
+				data->collec += 1;
+		}
+	}
 	return ;
 }
 
@@ -59,12 +74,12 @@ void	check_input(int argc, char *argv[])
 		free(temp);
 		temp = get_next_line(data->map_fd);
 	}
-	data->width = data->height; //TODO Error checking
 	data->map = ft_calloc(data->height + 1, sizeof(char *));
 	close(data->map_fd);
 	data->map_fd = open(ft_strjoin("maps/", argv[1]), O_RDONLY);
 	parse_map();
 	close(data->map_fd);
+	data->width = ft_linelen(data->map[0]); //TODO Error checking
 	check_map();
 	return ;
 }

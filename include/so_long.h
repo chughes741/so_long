@@ -55,6 +55,7 @@ typedef struct	s_data {
 	int		moves;
 	int		x_P;
 	int		y_P;
+	int		collec;
 	t_img	*img;
 }			t_data;
 
@@ -66,11 +67,13 @@ void	del_data(void);
 void	parse_map(void);
 void	exit_error(void);
 void	check_map(void);
+void	close_window(t_data **data);
+void	check_tile(void);
 
 // Moves
-void	move_up(void);
-void	move_dn(void);
-void	move_rg(void);
-void	move_lf(void);
+void	move_up(t_data **data);
+void	move_dn(t_data **data);
+void	move_lf(t_data **data);
+void	move_rg(t_data **data);
 
 #endif

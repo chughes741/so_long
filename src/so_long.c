@@ -17,12 +17,26 @@ int	exit_window(int keycode, t_data **data)
 	exit(0);
 }
 
-int	close_window(int keycode, t_data **data)
+void	close_window(t_data **data)
 {
-	if (keycode != 53 && keycode > 0)
-		return (0);
 	mlx_destroy_window((*data)->mlx, (*data)->win);
 	exit(0);
+}
+
+int	keydown(int keycode, t_data **data)
+{
+	if (keycode == 53)
+		close_window(data);
+	if (keycode == 13)
+		move_up(data);
+	if (keycode == 1)
+		move_dn(data);
+	if (keycode == 0)
+		move_lf(data);
+	if (keycode == 2)
+		move_rg(data);
+	check_tile();
+	return (0);
 }
 
 void	put_tile(char tile, int x, int y)
@@ -46,16 +60,16 @@ void	put_tile(char tile, int x, int y)
 int	render_frame(void)
 {
 	t_data	*data;
-	int		i;
-	int		j;
+	int		x;
+	int		y;
 
 	data = get_data();
-	j = -1;
-	while (++j < data->height)
+	y = -1;
+	while (++y < data->height)
 	{
-		i = -1;
-		while (++i < data->width)
-			put_tile(data->map[j][i], i * 64, j * 64);
+		x = -1;
+		while (++x < data->width)
+			put_tile(data->map[y][x], x * 64, y * 64);
 	}
 	put_tile('P', data->x_P * 64, data->y_P * 64);
 	return (0);
@@ -72,7 +86,7 @@ int	main(int argc, char *argv[])
 	data->win = mlx_new_window(data->mlx, data->width * 64, data->height * 64, "so_long");
 
 	mlx_hook(data->win, ON_DESTROY, 0, exit_window, &data);
-	mlx_hook(data->win, ON_KEYDOWN, 0, close_window, &data);
+	mlx_hook(data->win, ON_KEYDOWN, 0, keydown, &data);
 	mlx_loop_hook(data->mlx, render_frame, NULL);
 	mlx_loop(data->mlx);
 
