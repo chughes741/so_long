@@ -14,18 +14,15 @@
 
 int	main(int argc, char *argv[])
 {
-	t_data	*data;
+	t_data	*d;
 
-	data = get_data();
-	data->mlx = mlx_init();
+	d = get_data();
+	d->mlx = mlx_init();
 	init_data(argc, argv);
-
-	data->win = mlx_new_window(data->mlx, data->width * 64, data->height * 64, "so_long");
-
-	mlx_hook(data->win, ON_DESTROY, 0, exit_window, &data);
-	mlx_hook(data->win, ON_KEYDOWN, 0, keydown, &data);
-	mlx_loop_hook(data->mlx, render_frame, NULL);
-	mlx_loop(data->mlx);
-
+	d->win = mlx_new_window(d->mlx, d->width * 64, d->height * 64, "so_long");
+	mlx_hook(d->win, ON_DESTROY, 0, exit_window, &d);
+	mlx_hook(d->win, ON_KEYDOWN, 0, keydown, &d);
+	mlx_loop_hook(d->mlx, render_frame, NULL);
+	mlx_loop(d->mlx);
 	return (0);
 }
