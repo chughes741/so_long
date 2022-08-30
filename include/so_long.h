@@ -64,6 +64,7 @@ void	check_tile(void);
 // MLX interop functions
 void	close_window(t_data **data);
 int		render_frame(void);
+void	put_tile(char tile, int x, int y);
 
 // Movement functions
 void	move_up(t_data **data);
