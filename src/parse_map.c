@@ -19,7 +19,7 @@ void	map_height(void)
 	char	*temp;
 
 	data = get_data();
-	data->map_fd = open(data->map_name, O_RDONLY); //! Non .ber files
+	data->map_fd = open(data->map_name, O_RDONLY);
 	if (data->map_fd < 0)
 		exit_error();
 	temp = get_next_line(data->map_fd);
@@ -69,10 +69,39 @@ void	check_map(void)
 				data->x_p = x;
 				data->y_p = y;
 				data->map[y][x] = '0';
+				data->n_p += 1;
 			}
 			if (data->map[y][x] == 'C')
 				data->n_col += 1;
+			if (data->map[y][x] == 'E')
+				data->n_ex += 1;
 		}
+	}
+	return ;
+}
+
+// Checks walls
+void	check_walls(t_data	*data)
+{
+	int	i;
+
+	i = -1;
+	while (++i < data->width)
+	{
+		if (data->map[0][i] != '1' || data->map[data->height - 1][i] != '1')
+			exit_error();
+	}
+	i = -1;
+	while (++i < data->height)
+	{
+		if (data->map[i][0] != '1' || data->map[i][data->width - 1] != '1')
+			exit_error();
+	}
+	i = -1;
+	while (++i < data->height)
+	{
+		if (ft_linelen(data->map[i]) != data->width)
+			exit_error();
 	}
 	return ;
 }
@@ -91,5 +120,8 @@ void	check_input(int argc)
 	map_height();
 	parse_map();
 	check_map();
+	if (data->n_col < 1 || data->n_ex < 1 || data->n_p != 1)
+		exit_error();
+	check_walls(data);
 	return ;
 }

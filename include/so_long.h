@@ -48,6 +48,8 @@ typedef struct s_data {
 	int		x_p;
 	int		y_p;
 	int		n_col;
+	int		n_p;
+	int		n_ex;
 	void	*wall;
 	void	*empty;
 	void	*exit;
