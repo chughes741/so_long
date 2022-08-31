@@ -14,12 +14,14 @@
 
 int	exit_window(int keycode, t_data **data)
 {
+	del_data();
 	exit(0);
 }
 
 void	close_window(t_data **data)
 {
 	mlx_destroy_window((*data)->mlx, (*data)->win);
+	del_data();
 	exit(0);
 }
 
