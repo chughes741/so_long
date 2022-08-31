@@ -13,7 +13,6 @@
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
-//TODO Check includes
 # include <math.h>
 # include <OpenGL/gl3.h>
 # include <mlx.h>
