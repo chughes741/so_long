@@ -36,7 +36,6 @@ void	move_up(t_data **data)
 	d = (*data);
 	if (d->map[d->y_p - 1][d->x_p] == '1')
 		return ;
-	printf("Can move up");
 	d->y_p -= 1;
 	d->moves += 1;
 	printf("%i\n", d->moves);
