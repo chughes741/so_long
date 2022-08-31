@@ -110,7 +110,6 @@ void	check_walls(t_data	*data)
 void	check_input(int argc)
 {
 	t_data	*data;
-	char	*temp;
 
 	data = get_data();
 	if (argc != 2)

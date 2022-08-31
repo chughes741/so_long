@@ -15,7 +15,9 @@
 // Cleans up and exits program
 int	exit_window(int keycode, t_data **data)
 {
-	del_data();
+	keycode = 0;
+	if (*data)
+		del_data();
 	exit(0);
 }
 
