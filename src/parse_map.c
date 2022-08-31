@@ -86,6 +86,8 @@ void	check_input(int argc)
 	data = get_data();
 	if (argc != 2)
 		exit_error();
+	if (ft_strncmp(&(data->map_name)[ft_strlen(data->map_name) - 4], ".ber", 4))
+		exit_error();
 	map_height();
 	parse_map();
 	check_map();
