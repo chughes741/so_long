@@ -17,17 +17,17 @@ void	put_tile(char tile, int x, int y)
 	t_data	*data;
 
 	data = get_data();
-	if (tile == '1')
-		mlx_put_image_to_window(data->mlx, data->win, data->img->wall, x, y);
 	if (tile == '0')
 		mlx_put_image_to_window(data->mlx, data->win, data->img->empty, x, y);
-	if (tile == 'E' && data->collec == 0)
+	else if (tile == 'C')
+		mlx_put_image_to_window(data->mlx, data->win, data->img->collec, x, y);
+	else if (tile == 'P')
+		mlx_put_image_to_window(data->mlx, data->win, data->img->charac, x, y);
+	else if (tile == '1')
+		mlx_put_image_to_window(data->mlx, data->win, data->img->wall, x, y);
+	else if (tile == 'E' && data->collec == 0)
 		mlx_put_image_to_window(data->mlx, data->win, data->img->exit, x, y);
 	else
 		mlx_put_image_to_window(data->mlx, data->win, data->img->empty, x, y);
-	if (tile == 'C')
-		mlx_put_image_to_window(data->mlx, data->win, data->img->collec, x, y);
-	if (tile == 'P')
-		mlx_put_image_to_window(data->mlx, data->win, data->img->charac, x, y);
 	return ;
 }
