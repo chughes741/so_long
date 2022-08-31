@@ -18,12 +18,12 @@ void	check_tile(void)
 	t_data	*d;
 
 	d = get_data();
-	if (d->map[d->x_p][d->y_p] == 'C')
+	if (d->map[d->y_p][d->x_p] == 'C')
 	{
-		d->map[d->x_p][d->y_p] = '0';
+		d->map[d->y_p][d->x_p] = '0';
 		d->n_col -= 1;
 	}
-	if (d->map[d->x_p][d->y_p] == 'E' && d->n_col == 0)
+	if (d->map[d->y_p][d->x_p] == 'E' && d->n_col == 0)
 		close_window(&d);
 	return ;
 }
@@ -34,8 +34,9 @@ void	move_up(t_data **data)
 	t_data	*d;
 
 	d = (*data);
-	if (d->map[d->x_p][d->y_p - 1] == '1')
+	if (d->map[d->y_p - 1][d->x_p] == '1')
 		return ;
+	printf("Can move up");
 	d->y_p -= 1;
 	d->moves += 1;
 	printf("%i\n", d->moves);
@@ -48,7 +49,7 @@ void	move_dn(t_data **data)
 	t_data	*d;
 
 	d = (*data);
-	if (d->map[d->x_p][d->y_p + 1] == '1')
+	if (d->map[d->y_p + 1][d->x_p] == '1')
 		return ;
 	d->y_p += 1;
 	d->moves += 1;
@@ -62,7 +63,7 @@ void	move_lf(t_data **data)
 	t_data	*d;
 
 	d = (*data);
-	if (d->map[d->x_p - 1][d->y_p] == '1')
+	if (d->map[d->y_p][d->x_p - 1] == '1')
 		return ;
 	d->x_p -= 1;
 	d->moves += 1;
@@ -76,7 +77,7 @@ void	move_rg(t_data **data)
 	t_data	*d;
 
 	d = (*data);
-	if (d->map[d->x_p + 1][d->y_p] == '1')
+	if (d->map[d->y_p][d->x_p + 1] == '1')
 		return ;
 	d->x_p += 1;
 	d->moves += 1;
