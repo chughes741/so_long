@@ -21,8 +21,10 @@ void	put_tile(char tile, int x, int y)
 		mlx_put_image_to_window(data->mlx, data->win, data->img->wall, x, y);
 	if (tile == '0')
 		mlx_put_image_to_window(data->mlx, data->win, data->img->empty, x, y);
-	if (tile == 'E')
+	if (tile == 'E' && data->collec == 0)
 		mlx_put_image_to_window(data->mlx, data->win, data->img->exit, x, y);
+	else
+		mlx_put_image_to_window(data->mlx, data->win, data->img->empty, x, y);
 	if (tile == 'C')
 		mlx_put_image_to_window(data->mlx, data->win, data->img->collec, x, y);
 	if (tile == 'P')
