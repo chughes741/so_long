@@ -12,12 +12,14 @@
 
 #include "../include/so_long.h"
 
+// Cleans up and exits program
 int	exit_window(int keycode, t_data **data)
 {
 	del_data();
 	exit(0);
 }
 
+// Closes window, cleans up, and exits
 void	close_window(t_data **data)
 {
 	mlx_destroy_window((*data)->mlx, (*data)->win);
@@ -25,6 +27,7 @@ void	close_window(t_data **data)
 	exit(0);
 }
 
+// Checks key presses
 int	keydown(int keycode, t_data **data)
 {
 	if (keycode == 53)
