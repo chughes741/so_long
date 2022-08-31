@@ -89,9 +89,9 @@ $(TEST):
 debug: $(DEBUG)
 	$(HIDE)./$^
 
-test: re
-#	$(HIDE)clear
-	$(HIDE)./$(NAME) map_huge.ber
+test: $(NAME)
+	$(HIDE)clear
+	$(HIDE)./$(NAME) maps/map_huge.ber
 
 leak: $(TEST)
 	$(HIDE)clear
