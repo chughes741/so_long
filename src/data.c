@@ -30,14 +30,13 @@ void	init_data(int argc, char *argv[])
 	int		h;
 
 	d = get_data();
-	d->map_name = ft_strdup(argv[1]);
+	d->map_name = argv[1];
 	check_input(argc);
-	d->img = ft_calloc(1, sizeof(t_img *));
-	d->img->wall = mlx_xpm_file_to_image(d->mlx, "./assets/1.xpm", &w, &h);
-	d->img->empty = mlx_xpm_file_to_image(d->mlx, "./assets/0.xpm", &w, &h);
-	d->img->exit = mlx_xpm_file_to_image(d->mlx, "./assets/E.xpm", &w, &h);
-	d->img->collec = mlx_xpm_file_to_image(d->mlx, "./assets/C.xpm", &w, &h);
-	d->img->charac = mlx_xpm_file_to_image(d->mlx, "./assets/P.xpm", &w, &h);
+	d->wall = mlx_xpm_file_to_image(d->mlx, "./assets/1.xpm", &w, &h);
+	d->empty = mlx_xpm_file_to_image(d->mlx, "./assets/0.xpm", &w, &h);
+	d->exit = mlx_xpm_file_to_image(d->mlx, "./assets/E.xpm", &w, &h);
+	d->collec = mlx_xpm_file_to_image(d->mlx, "./assets/C.xpm", &w, &h);
+	d->charac = mlx_xpm_file_to_image(d->mlx, "./assets/P.xpm", &w, &h);
 	return ;
 }
 
@@ -47,8 +46,6 @@ void	del_data(void)
 	t_data	*data;
 
 	data = get_data();
-	if (data->img)
-		free(data->img);
 	free(data);
 	return ;
 }

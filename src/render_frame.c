@@ -12,6 +12,7 @@
 
 #include "../include/so_long.h"
 
+// Renders next frame from map to window
 int	render_frame(void)
 {
 	t_data	*data;

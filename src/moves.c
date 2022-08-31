@@ -21,9 +21,9 @@ void	check_tile(void)
 	if (d->map[d->x_p][d->y_p] == 'C')
 	{
 		d->map[d->x_p][d->y_p] = '0';
-		d->collec -= 1;
+		d->n_col -= 1;
 	}
-	if (d->map[d->x_p][d->y_p] == 'E' && d->collec == 0)
+	if (d->map[d->x_p][d->y_p] == 'E' && d->n_col == 0)
 		close_window(&d);
 	return ;
 }

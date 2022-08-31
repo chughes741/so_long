@@ -32,17 +32,8 @@ enum {
 	ON_DESTROY = 17
 };
 
-// Struct with sprite and tile img pointers
-typedef struct s_img {
-	void	*wall;
-	void	*empty;
-	void	*exit;
-	void	*collec;
-	void	*charac;
-}			t_img;
-
 // Data struct with window data
-typedef struct s_data { //TODO Check if any are unused
+typedef struct s_data {
 	void	*mlx;
 	void	*win;
 	char	*addr;
@@ -51,14 +42,17 @@ typedef struct s_data { //TODO Check if any are unused
 	int		map_fd;
 	int		height;
 	int		width;
-	int		bits_per_pixel;
 	int		line_length;
 	int		endian;
 	int		moves;
 	int		x_p;
 	int		y_p;
-	int		collec;
-	t_img	*img;
+	int		n_col;
+	void	*wall;
+	void	*empty;
+	void	*exit;
+	void	*collec;
+	void	*charac;
 }			t_data;
 
 // Data setup and teardown functions

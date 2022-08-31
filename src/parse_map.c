@@ -19,7 +19,7 @@ void	map_height(void)
 	char	*temp;
 
 	data = get_data();
-	data->map_fd = open(ft_strjoin("maps/", data->map_name), O_RDONLY);
+	data->map_fd = open(data->map_name, O_RDONLY); //! Non .ber files
 	if (data->map_fd < 0)
 		exit_error();
 	temp = get_next_line(data->map_fd);
@@ -40,7 +40,7 @@ void	parse_map(void)
 	int		i;
 
 	data = get_data();
-	data->map_fd = open(ft_strjoin("maps/", data->map_name), O_RDONLY);
+	data->map_fd = open(data->map_name, O_RDONLY);
 	data->map = ft_calloc(data->height + 1, sizeof(char *));
 	i = -1;
 	while (++i < data->height)
@@ -71,7 +71,7 @@ void	check_map(void)
 				data->map[y][x] = '0';
 			}
 			if (data->map[y][x] == 'C')
-				data->collec += 1;
+				data->n_col += 1;
 		}
 	}
 	return ;
