@@ -44,8 +44,16 @@ void	init_data(int argc, char *argv[])
 void	del_data(void)
 {
 	t_data	*data;
+	int		i;
 
 	data = get_data();
+	i = -1;
+	if (data->map)
+	{
+		while (data->map[++i])
+			free(data->map[i]);
+		free(data->map);
+	}
 	free(data);
 	return ;
 }
