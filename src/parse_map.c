@@ -71,10 +71,14 @@ void	check_map(void)
 				data->map[y][x] = '0';
 				data->n_p += 1;
 			}
-			if (data->map[y][x] == 'C')
+			else if (data->map[y][x] == 'C')
 				data->n_col += 1;
-			if (data->map[y][x] == 'E')
+			else if (data->map[y][x] == 'E')
 				data->n_ex += 1;
+			else if (data->map[y][x] == '0' || data->map[y][x] == '1')
+				data->n_col += 0;
+			else
+				exit_error();
 		}
 	}
 	return ;
