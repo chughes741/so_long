@@ -42,7 +42,7 @@ $(LDIR)/$(LIBFT):
 NAME	=	so_long
 SRCDIR	=	src/
 OBJDIR	=	bin/
-SRCS	=	$(wildcard $(SRCDIR)*.c)
+SRCS	=	$(wildcard $(SRCDIR)*.c) #! RBS
 OBJS	=	$(patsubst $(SRCDIR)%.c,$(OBJDIR)%.o,$(SRCS))
 
 all: $(LDIR)/$(LIBFT) $(MLXDIR)/$(MLX) $(NAME)
