@@ -18,7 +18,7 @@
 # include <mlx.h>
 # include <stdio.h>
 # include <fcntl.h>
-# include "../lft/include/libft.h"
+# include "../libft/include/libft.h"
 
 // Enum for MLX functions
 enum {

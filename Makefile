@@ -26,7 +26,7 @@ RM		=	rm -rf
 #!-----------------------------------------------------------------------------#
 
 LIBMLX	=	-L /usr/local/lib/ -lmlx -framework OpenGL -framework AppKit 
-LDIR	=	lft/
+LDIR	=	libft/
 LIBFT	=	libft.a
 
 # Generates libft.a
