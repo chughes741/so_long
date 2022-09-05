@@ -63,23 +63,7 @@ void	check_map(void)
 	{
 		x = -1;
 		while (++x < data->width)
-		{
-			if (data->map[y][x] == 'P')
-			{
-				data->x_p = x;
-				data->y_p = y;
-				data->map[y][x] = '0';
-				data->n_p += 1;
-			}
-			else if (data->map[y][x] == 'C')
-				data->n_col += 1;
-			else if (data->map[y][x] == 'E')
-				data->n_ex += 1;
-			else if (data->map[y][x] == '0' || data->map[y][x] == '1')
-				data->n_col += 0;
-			else
-				exit_error();
-		}
+			count_tile(x, y);
 	}
 	return ;
 }

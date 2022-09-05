@@ -67,6 +67,7 @@ void	parse_map(void);
 void	exit_error(void);
 void	check_map(void);
 void	check_tile(void);
+void	count_tile(int x, int y);
 
 // MLX interop functions
 void	close_window(t_data **data);
