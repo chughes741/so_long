@@ -32,6 +32,7 @@ void	init_data(int argc, char *argv[])
 	d = get_data();
 	d->map_name = argv[1];
 	check_input(argc);
+	d->mlx = mlx_init();
 	d->wall = mlx_xpm_file_to_image(d->mlx, "./assets/1.xpm", &w, &h);
 	d->empty = mlx_xpm_file_to_image(d->mlx, "./assets/0.xpm", &w, &h);
 	d->exit = mlx_xpm_file_to_image(d->mlx, "./assets/E.xpm", &w, &h);

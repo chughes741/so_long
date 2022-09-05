@@ -17,7 +17,6 @@ int	main(int argc, char *argv[])
 	t_data	*d;
 
 	d = get_data();
-	d->mlx = mlx_init();
 	init_data(argc, argv);
 	d->win = mlx_new_window(d->mlx, d->width * 64, d->height * 64, "so_long");
 	mlx_hook(d->win, ON_DESTROY, 0, exit_window, &d);
